@@ -1,0 +1,21 @@
+{
+  "name": "MUD.Modules.MenuRedirect.Editor.Tests",
+  "rootNamespace": "MUD.Modules.MenuRedirect.Tests",
+  "references": [
+    "MUD.Modules.MenuRedirect.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
