@@ -1327,8 +1327,21 @@ namespace MUD.Modules.MenuRedirect
 
         private static void EnsureAssetFolder(string folder)
         {
+            string fullFolder = ToFullPath(folder);
+
+            // AssetDatabase can keep a folder marked as valid after it was deleted
+            // outside Unity (tests, source control, or the OS). Recreate the physical
+            // folder instead of returning early and failing while writing the file.
             if (AssetDatabase.IsValidFolder(folder))
+            {
+                if (!Directory.Exists(fullFolder))
+                {
+                    Directory.CreateDirectory(fullFolder);
+                    AssetDatabase.ImportAsset(folder, ImportAssetOptions.ForceUpdate);
+                }
+
                 return;
+            }
 
             string[] parts = folder.Split('/');
             if (parts.Length < 2 ||
@@ -1344,10 +1357,31 @@ namespace MUD.Modules.MenuRedirect
                     continue;
 
                 string next = current + "/" + parts[i];
-                if (!AssetDatabase.IsValidFolder(next))
+                string fullNext = ToFullPath(next);
+                if (AssetDatabase.IsValidFolder(next))
                 {
+                    if (!Directory.Exists(fullNext))
+                    {
+                        Directory.CreateDirectory(fullNext);
+                        AssetDatabase.ImportAsset(next, ImportAssetOptions.ForceUpdate);
+                    }
+                }
+                else
+                {
+                    string fullCurrent = ToFullPath(current);
+                    if (!Directory.Exists(fullCurrent))
+                        Directory.CreateDirectory(fullCurrent);
+
                     string guid = AssetDatabase.CreateFolder(current, parts[i]);
                     if (string.IsNullOrEmpty(guid))
+                    {
+                        // Fall back to the file system when the AssetDatabase parent
+                        // entry is stale, then let Unity import the new folder.
+                        Directory.CreateDirectory(fullNext);
+                        AssetDatabase.ImportAsset(next, ImportAssetOptions.ForceUpdate);
+                    }
+
+                    if (!AssetDatabase.IsValidFolder(next) && !Directory.Exists(fullNext))
                         throw new IOException("Failed to create folder: " + next);
                 }
 
