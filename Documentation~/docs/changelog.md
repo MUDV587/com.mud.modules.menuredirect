@@ -3,6 +3,10 @@
 The canonical changelog is [CHANGELOG.md](https://github.com/MUDV587/com.mud.modules.menuredirect/blob/main/CHANGELOG.md).
 GitHub Releases contain the same release notes with downloadable tags.
 
+## 0.2.1 — 2026-11-06
+
+- Changed the Package Manager display name to `MUD.Modules.MenuRedirect`.
+
 ## 0.2.0 — 2026-11-06
 
 - Renamed the package to `com.mud.modules.menuredirect`, the editor assembly to

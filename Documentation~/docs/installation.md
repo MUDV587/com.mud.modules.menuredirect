@@ -14,7 +14,7 @@
 4. Enter the package URL:
 
 ```text
-https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0
+https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1
 ```
 
 5. Click **Add** and wait for Unity to compile.
@@ -26,7 +26,7 @@ The package appears as **MUD Menu Redirect** in the Package Manager.
 Open `Packages/manifest.json` and add:
 
 ```json
-"com.mud.modules.menuredirect": "https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0"
+"com.mud.modules.menuredirect": "https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1"
 ```
 
 Save the file and return to Unity. Package Manager resolves and imports the package automatically.
@@ -36,7 +36,7 @@ Save the file and return to Unity. Package Manager resolves and imports the pack
 For team projects, pin a tag or commit:
 
 ```text
-https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0
+https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1
 ```
 
 Omitting the fragment follows the default branch and can change without warning.

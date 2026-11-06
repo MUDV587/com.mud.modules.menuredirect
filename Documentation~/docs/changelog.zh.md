@@ -3,6 +3,10 @@
 完整变更日志见 [CHANGELOG.md](https://github.com/MUDV587/com.mud.modules.menuredirect/blob/main/CHANGELOG.md)。
 GitHub Releases 包含相同说明和可下载的 tag。
 
+## 0.2.1 — 2026-11-06
+
+- Package Manager 显示名称改为 `MUD.Modules.MenuRedirect`。
+
 ## 0.2.0 — 2026-11-06
 
 - 包名改为 `com.mud.modules.menuredirect`，程序集改为 `MUD.Modules.MenuRedirect.Editor`，

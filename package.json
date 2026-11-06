@@ -1,7 +1,7 @@
 {
   "name": "com.mud.modules.menuredirect",
-  "version": "0.2.0",
-  "displayName": "MUD Menu Redirect",
+  "version": "0.2.1",
+  "displayName": "MUD.Modules.MenuRedirect",
   "description": "Redirect or hide Unity Editor menu items with project-level rules, without modifying third-party source code. Editor-only, Unity 2022.3 LTS.",
   "unity": "2022.3",
   "license": "MIT",

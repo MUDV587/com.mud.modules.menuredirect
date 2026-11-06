@@ -53,7 +53,7 @@ Menu Redirect keeps the original code untouched:
 4. Enter:
 
 ```text
-https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0
+https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1
 ```
 
 5. Click **Add** and wait for Unity to compile.
@@ -63,10 +63,10 @@ https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0
 Add this entry to `Packages/manifest.json`:
 
 ```json
-"com.mud.modules.menuredirect": "https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0"
+"com.mud.modules.menuredirect": "https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1"
 ```
 
-Pinning a tag is recommended for team projects. Omit `#v0.2.0` to follow the default branch.
+Pinning a tag is recommended for team projects. Omit `#v0.2.1` to follow the default branch.
 
 ## Quick Start
 

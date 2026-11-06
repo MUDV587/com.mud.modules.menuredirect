@@ -3,6 +3,18 @@
 All notable changes to this package are documented in this file.
 The format follows Keep a Changelog; versioning follows SemVer.
 
+## [0.2.1] - 2026-11-06
+
+### Changed
+
+- Changed the Package Manager display name to `MUD.Modules.MenuRedirect`.
+  The package name, namespace, assembly name, and menu entry are unchanged.
+
+### 中文摘要
+
+- Package Manager 显示名称改为 `MUD.Modules.MenuRedirect`。
+  包名、命名空间、程序集名称和菜单入口保持不变。
+
 ## [0.2.0] - 2026-11-06
 
 ### Highlights

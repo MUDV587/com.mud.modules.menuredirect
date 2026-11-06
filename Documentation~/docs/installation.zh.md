@@ -14,7 +14,7 @@
 4. 输入：
 
 ```text
-https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0
+https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1
 ```
 
 5. 点击 **Add**，等待 Unity 编译。
@@ -26,7 +26,7 @@ Package Manager 中会显示 **MUD Menu Redirect**。
 打开 `Packages/manifest.json`，加入：
 
 ```json
-"com.mud.modules.menuredirect": "https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0"
+"com.mud.modules.menuredirect": "https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1"
 ```
 
 保存后回到 Unity，Package Manager 会自动解析并导入。
@@ -36,10 +36,10 @@ Package Manager 中会显示 **MUD Menu Redirect**。
 团队项目建议固定 tag 或 commit：
 
 ```text
-https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0
+https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1
 ```
 
-省略 `#v0.2.0` 会跟随默认分支，可能在没有提示的情况下发生变化。
+省略 `#v0.2.1` 会跟随默认分支，可能在没有提示的情况下发生变化。
 
 ## 升级
 

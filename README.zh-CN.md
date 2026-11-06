@@ -53,7 +53,7 @@ Menu Redirect 不需要改原代码：
 4. 输入：
 
 ```text
-https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0
+https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1
 ```
 
 5. 点击 **Add**，等待 Unity 编译完成。
@@ -63,10 +63,10 @@ https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0
 在 `Packages/manifest.json` 中加入：
 
 ```json
-"com.mud.modules.menuredirect": "https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.0"
+"com.mud.modules.menuredirect": "https://github.com/MUDV587/com.mud.modules.menuredirect.git#v0.2.1"
 ```
 
-团队项目建议固定 tag；去掉 `#v0.2.0` 则跟随默认分支。
+团队项目建议固定 tag；去掉 `#v0.2.1` 则跟随默认分支。
 
 ## 快速开始
 
