@@ -10,7 +10,10 @@ The page uses two resizable columns:
 - **Right column**: details for the selected rule, including paths, priority, validation, and status.
 - **Bottom area**: apply feedback and generated-code status.
 
-Drag the splitter between the columns to resize them. The left column has a minimum width of 220 px
+Drag the divider line between the columns to resize them. The two columns are separated by a
+single shared 1px black line; the 6px-wide drag handle is invisible, and dragging feedback is
+the line itself plus the horizontal-resize cursor (no highlight is drawn). The right column's
+content sits close to the divider line. The left column has a minimum width of 220 px
 and the right column a minimum width of 240 px. The splitter width is not persisted; it resets after
 leaving the page or reloading the domain.
 

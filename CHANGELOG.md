@@ -3,6 +3,22 @@
 All notable changes to this package are documented in this file.
 The format follows Keep a Changelog; versioning follows SemVer.
 
+## [Unreleased]
+
+### Changed
+
+- Settings page: the two columns now share a single 1px black divider line inside one
+  container; the empty gap between the rules list and rule details is gone. Splitter
+  dragging keeps the black line and the horizontal-resize cursor as the only feedback
+  (the blue hover/drag highlight was removed), and the right column's content sits
+  closer to the divider line.
+
+### 中文摘要
+
+- 设置页左右两栏改为共用一条 1px 黑色分割线，移除两栏之间的空白区域；
+  拖动分隔条时不再绘制蓝色高亮竖条，仅保留黑线与左右箭头光标作为反馈，
+  右栏内容更靠近分割线。
+
 ## [0.2.1] - 2026-11-06
 
 ### Changed

@@ -26,7 +26,8 @@ namespace MUD.Modules.MenuRedirect
         private const double DraftSaveDebounceSeconds = 0.75;
         private const double PendingCodeChangesCheckSeconds = 1.0;
 
-        // 左右分栏的分隔条。分隔条本身是一个真实的布局列，宽度由它预留。
+        // 左右分栏的分隔条。视觉上只有一条两栏共用的 1px 黑色分割线；
+        // 分隔条本身是一个不可见的 6px 布局列，只作为拖拽热区。
         internal const float SplitterWidth = 6f;
         internal const float MinLeftPaneWidth = 220f;
         internal const float MinRightPaneWidth = 240f;
@@ -89,6 +90,8 @@ namespace MUD.Modules.MenuRedirect
         private bool _stylesInitialized;
         private bool _stylesProSkin;
         private GUIStyle _paneStyle = null!;
+        private GUIStyle _splitListPaneStyle = null!;
+        private GUIStyle _splitDetailPaneStyle = null!;
         private GUIStyle _paneTitleStyle = null!;
         private GUIStyle _sectionTitleStyle = null!;
         private GUIStyle _descriptionStyle = null!;
@@ -115,6 +118,7 @@ namespace MUD.Modules.MenuRedirect
         private GUIStyle _emptyButtonStyle = null!;
         private Color _accentColor;
         private Color _separatorColor;
+        private Color _dividerColor;
         private Color _primaryTextColor;
         private Color _passTextColor;
         private Color _warningTextColor;
@@ -1090,10 +1094,13 @@ namespace MUD.Modules.MenuRedirect
                     maxLeft);
             }
 
+            // 两栏共用一个 helpBox 容器和一条 1px 黑色分割线，中间不留空隙；
+            // 分隔条只是居中在该线上的 6px 不可见拖拽热区，不绘制任何背景。
+            EditorGUILayout.BeginVertical(_paneStyle, GUILayout.ExpandHeight(true));
             EditorGUILayout.BeginHorizontal(GUILayout.ExpandHeight(true));
             DrawRuleListPane(settings, ruleList, _splitLeftWidth);
 
-            // 分隔条是一个真实的布局列：先由 GUILayout 预留宽高，再拿到与分栏区域
+            // 分隔条只是一个不可见的 6px 拖拽热区：先由 GUILayout 预留宽高，再拿到与分栏区域
             // 一致的 Rect。GetRect 返回的 rect 与 Event.current.mousePosition 处于同一
             // GUI 坐标系，Contains 命中测试可靠。
             Rect splitterRect = GUILayoutUtility.GetRect(
@@ -1107,31 +1114,24 @@ namespace MUD.Modules.MenuRedirect
             bool splitterHovered = splitterRect.Contains(mouse);
 
             EditorGUIUtility.AddCursorRect(splitterRect, MouseCursor.ResizeHorizontal);
+            // 只画两栏共用的 1px 黑色分割线；拖动/悬停时不加任何高亮。
             EditorGUI.DrawRect(
-                splitterRect,
-                GetSplitterColor(splitterHovered || _splitterDragging));
-
-            if (splitterHovered || _splitterDragging)
-            {
-                // 悬停/拖动时在中间画一条高亮线，让可拖动的区域更明显。
-                Color highlight = _accentColor;
-                highlight.a = 0.9f;
-                EditorGUI.DrawRect(
-                    new Rect(
-                        splitterRect.x + splitterRect.width * 0.5f - 1f,
-                        splitterRect.y,
-                        2f,
-                        splitterRect.height),
-                    highlight);
-            }
+                new Rect(
+                    splitterRect.x + (splitterRect.width - 1f) * 0.5f,
+                    splitterRect.y,
+                    1f,
+                    splitterRect.height),
+                _dividerColor);
 
             HandleSplitterDrag(splitterRect, current, mouse, splitterHovered);
 
             DrawRuleDetailsPane(settings);
             EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndVertical();
 
             // GetLastRect 只在 Repaint 阶段可靠；Layout 等阶段可能返回 1×1。
-            // 如果把这些临时值当成真实宽度，下一次拖动就会被夹回最小宽度。
+            // 这里取到的是共用容器的 Rect；如果把这些临时值当成真实宽度，
+            // 下一次拖动就会被夹回最小宽度。
             if (current.type == EventType.Repaint)
             {
                 Rect rowRect = GUILayoutUtility.GetLastRect();
@@ -1322,23 +1322,9 @@ namespace MUD.Modules.MenuRedirect
             return Mathf.Clamp(requested, effectiveMin, effectiveMax);
         }
 
-        private Color GetSplitterColor(bool highlighted)
-        {
-            if (highlighted)
-            {
-                Color accent = _accentColor;
-                accent.a = EditorGUIUtility.isProSkin ? 0.45f : 0.35f;
-                return accent;
-            }
-
-            return EditorGUIUtility.isProSkin
-                ? new Color(0.5f, 0.5f, 0.5f, 0.5f)
-                : new Color(0.4f, 0.4f, 0.4f, 0.5f);
-        }
-
         private void DrawRuleListPane(MenuRedirectSettings settings, ReorderableList ruleList, float width)
         {
-            EditorGUILayout.BeginVertical(_paneStyle, GUILayout.Width(width), GUILayout.ExpandHeight(true));
+            EditorGUILayout.BeginVertical(_splitListPaneStyle, GUILayout.Width(width), GUILayout.ExpandHeight(true));
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(L.T("ui.list.title"), _paneTitleStyle, GUILayout.Width(48f));
@@ -1470,7 +1456,8 @@ namespace MUD.Modules.MenuRedirect
 
         private void DrawRuleDetailsPane(MenuRedirectSettings settings)
         {
-            EditorGUILayout.BeginVertical(_paneStyle, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+            // 右栏内容紧贴共用的 1px 分割线，比原来的 helpBox 内边距更靠近。
+            EditorGUILayout.BeginVertical(_splitDetailPaneStyle, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(L.T("ui.detail.title"), _paneTitleStyle, GUILayout.Width(88f));
@@ -2801,6 +2788,20 @@ namespace MUD.Modules.MenuRedirect
                 ? new Color(0.48f, 0.48f, 0.48f)
                 : new Color(0.55f, 0.55f, 0.55f);
 
+            // 两栏共用外层 helpBox（_paneStyle）；内层样式只负责内边距，
+            // 右栏左内边距尽量小，让内容紧贴共用分割线。
+            _splitListPaneStyle = new GUIStyle
+            {
+                padding = new RectOffset(0, 2, 0, 0),
+                margin = new RectOffset(0, 0, 0, 0)
+            };
+
+            _splitDetailPaneStyle = new GUIStyle
+            {
+                padding = new RectOffset(2, 0, 0, 0),
+                margin = new RectOffset(0, 0, 0, 0)
+            };
+
             _paneStyle = new GUIStyle(EditorStyles.helpBox)
             {
                 padding = new RectOffset(6, 6, 6, 6),
@@ -2968,6 +2969,9 @@ namespace MUD.Modules.MenuRedirect
             _separatorColor = proSkin
                 ? new Color(1f, 1f, 1f, 0.08f)
                 : new Color(0f, 0f, 0f, 0.10f);
+            _dividerColor = proSkin
+                ? new Color(0f, 0f, 0f, 0.55f)
+                : new Color(0f, 0f, 0f, 0.30f);
         }
 
         private void DrawSeparator()
