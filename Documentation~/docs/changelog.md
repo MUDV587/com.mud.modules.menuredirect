@@ -13,6 +13,8 @@ GitHub Releases contain the same release notes with downloadable tags.
 - Changed the package author name and the copyright holder in `LICENSE` and the
   documentation footer from `MUDV587` to `MUD`. Repository and account URLs are
   unchanged.
+- The language selector's auto option now reads `跟随系统（自动）` / `System (automatic)`
+  (same as Gist Manager); the dropdown was widened so the English label is not clipped.
 
 ## 0.2.1 — 2026-11-06
 

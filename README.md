@@ -34,7 +34,7 @@ Menu Redirect keeps the original code untouched:
 - **Safe apply** — generated-code writes, config saves, and old-file removal are transactional.
 - **Draft recovery** — unsaved edits are debounced to `Library/MenuRedirectDraft.json` and restored after a crash.
 - **Import / export** — portable rule-only JSON files for reuse across projects.
-- **Bilingual editor UI** — Follow System / 中文 / English, stored per project in `EditorPrefs`.
+- **Bilingual editor UI** — System (automatic) / 中文 / English, stored per project in `EditorPrefs`.
 - **EditMode regression tests** — 84 tests covering rules, validation, generated code, and Unity ownership.
 
 ## Requirements

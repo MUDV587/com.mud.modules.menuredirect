@@ -15,6 +15,8 @@ The format follows Keep a Changelog; versioning follows SemVer.
 - Changed the package author name and the copyright holder in `LICENSE` and the
   documentation footer from `MUDV587` to `MUD`. Repository and account URLs are
   unchanged.
+- The language selector's auto option now reads `跟随系统（自动）` / `System (automatic)`
+  (same as Gist Manager); the dropdown was widened so the English label is not clipped.
 
 ### 中文摘要
 
@@ -23,6 +25,8 @@ The format follows Keep a Changelog; versioning follows SemVer.
   右栏内容更靠近分割线。
 - 包作者名以及 `LICENSE` 和文档页脚中的版权持有者由 `MUDV587` 改为 `MUD`；
   仓库与账号链接保持不变。
+- 语言下拉框的“跟随系统”选项现在显示为 `跟随系统（自动）` / `System (automatic)`
+  （与 Gist Manager 一致）；下拉框相应加宽，英文文案不再被裁剪。
 
 ## [0.2.1] - 2026-11-06
 

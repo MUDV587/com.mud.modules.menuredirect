@@ -446,7 +446,7 @@ namespace MUD.Modules.MenuRedirect
             }
 
             float languageLabelWidth = _languageLabelWidth;
-            float rightGroupWidth = helpWidth + 24f + languageLabelWidth + 4f + 112f;
+            float rightGroupWidth = helpWidth + 24f + languageLabelWidth + 4f + 150f;
 
             EditorGUILayout.BeginHorizontal(GUILayout.Width(rightGroupWidth));
 
@@ -488,7 +488,7 @@ namespace MUD.Modules.MenuRedirect
             int selected = EditorGUILayout.Popup(
                 (int)mode,
                 options,
-                GUILayout.Width(112f));
+                GUILayout.Width(150f));
 
             if (selected != (int)mode)
                 ChangeLanguage((MenuRedirectLanguage)selected);

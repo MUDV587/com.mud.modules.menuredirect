@@ -64,7 +64,7 @@ namespace MUD.Modules.MenuRedirect
             new Dictionary<string, string>(StringComparer.Ordinal)
             {
                 { "ui.language.label", "语言" },
-                { "ui.language.auto", "跟随系统" },
+                { "ui.language.auto", "跟随系统（自动）" },
                 { "ui.language.chinese", "中文" },
                 { "ui.language.english", "English" },
                 { "ui.language.tooltip", "界面语言；默认跟随系统语言。" },
@@ -528,7 +528,7 @@ namespace MUD.Modules.MenuRedirect
             new Dictionary<string, string>(StringComparer.Ordinal)
             {
                 { "ui.language.label", "Language" },
-                { "ui.language.auto", "System" },
+                { "ui.language.auto", "System (automatic)" },
                 { "ui.language.chinese", "中文" },
                 { "ui.language.english", "English" },
                 { "ui.language.tooltip", "UI language. Defaults to the system language." },

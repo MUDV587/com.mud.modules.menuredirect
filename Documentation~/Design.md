@@ -132,7 +132,7 @@ Editor/Redirect/
   `Repaint`；随后的 `Layout` / `Repaint` 仍按新宽度完整排版，保持完全实时变宽。
   宽度不写入配置、不持久化，离开页面或域重载后恢复默认。
   标题栏右侧动作组中，“规则说明 / Help”位于最左侧，语言标签使用右对齐样式并紧贴语言下拉框；
-  语言选择为“跟随系统 / 中文 / English”，默认跟随系统；语言偏好按项目 productGUID
+  语言选择为“跟随系统（自动）/ 中文 / English”，默认跟随系统；语言偏好按项目 productGUID
   保存在本机 `EditorPrefs`（`MUD.Modules.MenuRedirect.Language.<productGUID>`），不进入规则配置。
   按钮宽度按当前语言动态测量，避免英文 `Open Folder` 等文字被截断。
   切换语言只重建文案与校验缓存并重绘，不改变未保存状态，

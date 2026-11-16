@@ -62,7 +62,7 @@ Changing the folder marks the page as unsaved. Apply migrates the generated file
 
 ## Language
 
-The language selector supports **Follow System**, **中文**, and **English**. The preference is stored
+The language selector supports **System (automatic)**, **中文**, and **English**. The preference is stored
 per project in `EditorPrefs`, not in `MenuRedirect.asset`. Changing the language does not mark the
 page as dirty, save the configuration, or recompile generated code.
 

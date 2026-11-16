@@ -33,7 +33,7 @@ the original method by reflection, so the redirected entry still works after the
 - Transactional generated-code updates with rollback.
 - Unsaved draft recovery through `Library/MenuRedirectDraft.json`.
 - Rule import/export as portable JSON.
-- Follow System / 中文 / English editor UI.
+- System (automatic) / 中文 / English editor UI.
 - 84 EditMode regression tests.
 
 ## Requirements

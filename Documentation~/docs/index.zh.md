@@ -32,7 +32,7 @@ Unity 通过编译期 `[MenuItem]` 特性注册菜单。Menu Redirect 可以：
 - 生成代码事务写入与失败回滚。
 - 通过 `Library/MenuRedirectDraft.json` 恢复未保存草稿。
 - 规则 JSON 导入/导出。
-- 跟随系统 / 中文 / English 编辑器界面。
+- 跟随系统（自动）/ 中文 / English 编辑器界面。
 - 84 个 EditMode 回归测试。
 
 ## 环境要求
