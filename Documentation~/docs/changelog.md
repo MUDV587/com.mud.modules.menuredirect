@@ -10,6 +10,9 @@ GitHub Releases contain the same release notes with downloadable tags.
   dragging keeps the black line and the horizontal-resize cursor as the only feedback
   (the blue hover/drag highlight was removed), and the right column's content sits
   closer to the divider line.
+- Changed the package author name and the copyright holder in `LICENSE` and the
+  documentation footer from `MUDV587` to `MUD`. Repository and account URLs are
+  unchanged.
 
 ## 0.2.1 — 2026-11-06
 
